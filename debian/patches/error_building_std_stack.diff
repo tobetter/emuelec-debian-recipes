@@ -1,0 +1,12 @@
+Index: emuelec-emulationstation/es-app/src/views/gamelist/ISimpleGameListView.h
+===================================================================
+--- emuelec-emulationstation.orig/es-app/src/views/gamelist/ISimpleGameListView.h
++++ emuelec-emulationstation/es-app/src/views/gamelist/ISimpleGameListView.h
+@@ -8,6 +8,7 @@
+ #include <stack>
+ #include <set>
+ #include "MultiStateInput.h"
++#include <stack>
+ 
+ class ISimpleGameListView : public IGameListView
+ {
