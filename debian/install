@@ -1,0 +1,12 @@
+*.md		/usr/share/emulationstation/themes/Crystal/
+*.xml		/usr/share/emulationstation/themes/Crystal/
+169/*		/usr/share/emulationstation/themes/Crystal/169/
+169p480/*	/usr/share/emulationstation/themes/Crystal/169p480/
+43/*		/usr/share/emulationstation/themes/Crystal/43/
+43crt/*		/usr/share/emulationstation/themes/Crystal/43crt/
+assets/*	/usr/share/emulationstation/themes/Crystal/assets/
+fonts/*		/usr/share/emulationstation/themes/Crystal/fonts/
+lang/*		/usr/share/emulationstation/themes/Crystal/lang/
+options/*	/usr/share/emulationstation/themes/Crystal/options/
+screens/*	/usr/share/emulationstation/themes/Crystal/screens/
+systems/*	/usr/share/emulationstation/themes/Crystal/systems/
