@@ -1,0 +1,84 @@
+Index: emuelec-emulationstation/es-app/src/SystemData.cpp
+===================================================================
+--- emuelec-emulationstation.orig/es-app/src/SystemData.cpp
++++ emuelec-emulationstation/es-app/src/SystemData.cpp
+@@ -916,7 +916,7 @@ bool SystemData::isFeatureSupported(std:
+ 	return !es_features_loaded;
+ }
+ 
+-// Load custom additionnal config from : /userdata/system/configs/emulationstation/es_systems_*.cfg
++// Load custom additionnal config from : /usr/share/emulationstation/es_systems_*.cfg
+ void SystemData::loadAdditionnalConfig(pugi::xml_node& srcSystems)
+ {
+ 	for (auto customPath : Utils::FileSystem::getDirContent(Utils::FileSystem::getEsConfigPath(), false, false))
+@@ -1474,7 +1474,7 @@ std::string SystemData::getConfigPath(bo
+ 		return customPath;
+ #endif
+ 
+-	std::string userdataPath = Utils::FileSystem::getEsConfigPath() + "/es_systems.cfg"; // /userdata/system/configs/emulationstation/es_systems.cfg
++	std::string userdataPath = Utils::FileSystem::getEsConfigPath() + "/es_systems.cfg"; // /usr/share/emulationstation/es_systems.cfg
+ 	if(forWrite || Utils::FileSystem::exists(userdataPath))
+ 		return userdataPath;
+ 
+@@ -2061,9 +2061,9 @@ SystemData* SystemData::getFirstVisibleS
+ }
+ 
+ /*# ${rom}.keys
+-    # /userdata/system/configs/evmapy/${system}.${emulator}.${core}.keys
+-    # /userdata/system/configs/evmapy/${system}.${emulator}.keys
+-    # /userdata/system/configs/evmapy/${system}.keys
++    # /usr/share/evmapy/${system}.${emulator}.${core}.keys
++    # /usr/share/evmapy/${system}.${emulator}.keys
++    # /usr/share/evmapy/${system}.keys
+     # /usr/share/evmapy/${system}.${emulator}.${core}.keys
+     # /usr/share/evmapy/${system}.${emulator}.keys
+     # /usr/share/evmapy/${system}.keys*/
+@@ -2073,7 +2073,7 @@ std::string SystemData::getKeyboardMappi
+ #if WIN32
+ 	return Utils::FileSystem::getEsConfigPath() + "/padtokey/" + getName() + ".keys";
+ #else	
+-	return "/userdata/system/configs/evmapy/" + getName() + ".keys";
++	return "/usr/share/evmapy/" + getName() + ".keys";
+ #endif
+ }
+ 
+Index: emuelec-emulationstation/es-core/src/utils/FileSystemUtil.cpp
+===================================================================
+--- emuelec-emulationstation.orig/es-core/src/utils/FileSystemUtil.cpp
++++ emuelec-emulationstation/es-core/src/utils/FileSystemUtil.cpp
+@@ -41,17 +41,17 @@ namespace Utils
+ #if defined WIN32 || defined _ENABLEEMUELEC
+ 			static std::string cfg;
+ 			if (cfg.empty())
+-				cfg = Utils::FileSystem::getCanonicalPath(Utils::FileSystem::getHomePath() + "/.emulationstation");
++				cfg = "/usr/share/emulationstation";
+ 
+ 			return cfg;
+ #else
+-			return "/userdata/system/configs/emulationstation"; // batocera
++			return "/usr/share/emulationstation"; // batocera
+ #endif
+ 		}
+ 
+ 		std::string getSharedConfigPath()
+ 		{
+-#if defined WIN32 || defined _ENABLEEMUELEC
++#if defined WIN32
+ 			return Utils::FileSystem::getExePath();
+ #else
+ 			return "/usr/share/emulationstation"; // batocera
+Index: emuelec-emulationstation/es-core/src/SystemConf.cpp
+===================================================================
+--- emuelec-emulationstation.orig/es-core/src/SystemConf.cpp
++++ emuelec-emulationstation/es-core/src/SystemConf.cpp
+@@ -54,8 +54,8 @@ static std::map<std::string, std::string
+ };
+ 
+ #ifdef _ENABLEEMUELEC
+-std::string systemConfFile = "/storage/.config/emuelec/configs/emuelec.conf";
+-std::string systemConfFileTmp = "/storage/.config/emuelec/configs/emuelec.conf.tmp";
++std::string systemConfFile = "/usr/share/emuelec/configs/emuelec.conf";
++std::string systemConfFileTmp = "/usr/share/emuelec/configs/emuelec.conf.tmp";
+ #else
+ std::string systemConfFile = "/userdata/system/batocera.conf";
+ std::string systemConfFileTmp = "/userdata/system/batocera.conf.tmp";
