@@ -1,33 +1,37 @@
-Source: emulationstation
+Source: emuelec-emulationstation
 Section: games
 Priority: optional
 Maintainer: Dongjin Kim <tobetter@gmail.com>
 Uploaders: Dongjin Kim <tobetter@gmail.com>
 Standards-Version: 3.9.8
-Build-Depends:
+Build-Depends: debhelper,
 	build-essential,
 	cmake,
+	fonts-droid-fallback,
 	libasound2-dev,
-	libboost-date-time-dev,
-	libboost-filesystem-dev,
-	libboost-locale-dev,
-	libboost-system-dev,
+	libboost-all-dev,
 	libcurl4-openssl-dev,
 	libeigen3-dev,
 	libfreeimage-dev,
 	libfreetype6-dev,
 	libgl1-mesa-dev,
 	libsdl2-dev,
+	libsdl2-mixer-dev,
+	libvlc-dev,
+	libvlccore-dev,
+	rapidjson-dev,
+	vlc-bin
 Homepage: http://www.emulationstation.org
+Vcs-Git: https://github.com/EmuELEC/emuelec-emulationstation.git
 
-Package: emulationstation
+Package: emuelec-emulationstation
 Architecture: any
-Depends:
-	fonts-droid-fallback,
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+	${shlibs:Depends},
 	fonts-dejavu,
 	fonts-dejavu-extra,
-	${misc:Depends},
-	${shlibs:Depends}
+	fonts-droid-fallback
 Suggests: emulationstation-theme-simple
 Description: Graphical emulator front-end
  EmulationStation is a flexible, graphical front-end designed for keyboardless

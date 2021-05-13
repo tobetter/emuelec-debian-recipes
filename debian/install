@@ -1,2 +1,2 @@
-data/resources/window_icon_256.png	/usr/share/pixmaps/emulationstation.png
+resources/window_icon_256.png		/usr/share/pixmaps/emulationstation.png
 debian/emulationstation.desktop		/usr/share/applications/

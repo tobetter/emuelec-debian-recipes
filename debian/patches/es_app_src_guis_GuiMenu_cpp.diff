@@ -1,0 +1,20 @@
+diff --git a/es-app/src/guis/GuiMenu.cpp b/es-app/src/guis/GuiMenu.cpp
+index 8c643b04..6a97b334 100644
+--- a/es-app/src/guis/GuiMenu.cpp
++++ b/es-app/src/guis/GuiMenu.cpp
+@@ -1564,6 +1564,7 @@ void GuiMenu::openSystemSettings_batocera()
+ 	s->addEntry(_("INFORMATION"), true, [this] { openSystemInformations_batocera(); });
+ 
+ 	auto emuelec_timezones = std::make_shared<OptionListComponent<std::string> >(mWindow, _("TIMEZONE"), false);
++#ifdef _ENABLEEMUELEC
+ 	std::string currentTimezone = SystemConf::getInstance()->get("system.timezone");
+ 	if (currentTimezone.empty())
+ 		currentTimezone = std::string(getShOutput(R"(/usr/bin/emuelec-utils current_timezone)"));
+@@ -1571,6 +1572,7 @@ void GuiMenu::openSystemSettings_batocera()
+ 	for(std::stringstream ss(getShOutput(R"(/usr/bin/emuelec-utils timezones)")); getline(ss, a, ','); ) {
+ 		emuelec_timezones->add(a, a, currentTimezone == a); // emuelec
+ 	}
++#endif
+ 	s->addWithLabel(_("TIMEZONE"), emuelec_timezones);
+ 	s->addSaveFunc([emuelec_timezones] {
+ 		if (emuelec_timezones->changed()) {
