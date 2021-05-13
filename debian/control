@@ -1,0 +1,14 @@
+Source: emuelec-theme-carbon
+Section: games
+Priority: optional
+Maintainer: Dongjin Kim <tobetter@gmail.com>
+Uploaders: Dongjin Kim <tobetter@gmail.com>
+Standards-Version: 3.9.8
+Build-Depends:
+Vcs-Git: https://github.com/EmuELEC/es-theme-EmuELEC-carbon.git
+
+Package: emuelec-theme-carbon
+Architecture: any
+Description: Theme for EmuELEC
+ This theme is intended for EMUELEC and only contains
+ graphics for systems supported by EmuElec

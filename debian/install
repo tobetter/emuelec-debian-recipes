@@ -1,0 +1,7 @@
+*.txt		/usr/share/emulationstation/themes/carbon/
+*.xml		/usr/share/emulationstation/themes/carbon/
+art/*		/usr/share/emulationstation/themes/carbon/art/
+lang/*		/usr/share/emulationstation/themes/carbon/lang/
+layouts/*	/usr/share/emulationstation/themes/carbon/layouts/
+subsets/*	/usr/share/emulationstation/themes/carbon/subsets/
+views/*		/usr/share/emulationstation/themes/carbon/views/
